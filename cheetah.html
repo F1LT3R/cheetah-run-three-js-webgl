@@ -38,7 +38,8 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera(
-					45, window.innerWidth / window.innerHeight, 
+					50,
+					window.innerWidth / window.innerHeight, 
 					1, 
 					1000
 				);
@@ -49,10 +50,10 @@
 				controls.update();
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0xffffff );
-				// scene.fog = new THREE.Fog( 0xffffff, 200, 400 );
+				scene.background = new THREE.Color( 0x004488 );
+				scene.fog = new THREE.Fog( 0x004488, 120, 300 );
 
-				light = new THREE.HemisphereLight( 0xffffff, 0x444444, 1.4);
+				light = new THREE.HemisphereLight( 0xffffff, 0x444444, 1.2);
 				light.position.set( -100, 500, -100 );
 				scene.add( light );
 
@@ -68,6 +69,16 @@
 				light.shadow.camera.left = -120;
 				light.shadow.camera.right = 120;
 				scene.add( light );
+
+				// var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+				// mesh.rotation.x = - Math.PI / 2;
+				// mesh.receiveShadow = true;
+				// scene.add( mesh );
+
+				// var grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
+				// grid.material.opacity = 0.2;
+				// grid.material.transparent = true;
+				// scene.add( grid );
 
 
 			    // mesh is a group contains multiple sub-objects. Traverse and apply texture to all. 
@@ -101,15 +112,19 @@
 							        child.material.lights = true;
 							        // child.material.wireframe = true;
 
-			        				// window.addEventListener('mousemove', e => {
-			        					// console.log(e)
-			        					// object.position.set( 0, 0, 0 + (e.clientX / 100) );
-			        					// object.rotation.set(0, 1 - (Math.PI / window.innerWidth * (e.clientX/4)), 0);
-									    // object.__dirtyRotation = true;
-										// console.log(e.clientX)
-										// camera.position.set( -130 - (e.clientX/100), 0, 100);
-										// controls.target.set( 100, 100 + (e.clientX/10), 0 );
-										// controls.update();
+			      //   				window.addEventListener('mousemove', e => {
+			      //   					console.log(e)
+			      //   					// object.position.set( 0, 0, 0 + (e.clientX / 100) );
+			      //   					// object.rotation.set(
+			      //   					// 	0,
+			      //   					// 	0 + ((Math.PI * 2) / window.innerWidth * (e.clientX)),
+			      //   					// 	0
+			      //   					// );
+									//  //    object.__dirtyRotation = true;
+									// 	// console.log(e.clientX)
+									// 	// camera.position.set( -130 + (e.clientX/10) , 0, 0);
+									// 	// controls.target.set( 100, 100 + (e.clientX/10), 0 );
+									// 	// controls.update();
 									// })
 								}
 							});
